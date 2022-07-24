@@ -17,9 +17,10 @@ alias yqs="yay -Qs"
 alias grub-update="grub-mkconfig -o /boot/grub/grub.cfg"
 #	for lsd
 alias ls="lsd"
-alias la="lsd -a"
+alias la="lsd -Ah"
+alias ll='lsd -lh'
 alias lla="lsd -la"
-
+alias lsa='lsd -lah'
 
 # === functions ===
 export all_proxy=$proxy_url
@@ -44,7 +45,6 @@ function open() {
 source /usr/share/zinit/zinit.zsh
 
 zinit snippet OMZL::completion.zsh
-zinit snippet OMZL::directories.zsh
 
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
