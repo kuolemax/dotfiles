@@ -35,7 +35,6 @@ local options = {
 }
 
 
-
 vim.cmd [[
 try
   colorscheme dracula
