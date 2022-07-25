@@ -1,0 +1,60 @@
+allprojects {
+    def aliyun_uri = new URI('https://maven.aliyun.com/repository')
+    def public_uri  = new URI("${aliyun_uri}/public")
+    def google_uri  = new URI("${aliyun_uri}/google")
+    def gradle_plugin_uri  = new URI("${aliyun_uri}/gradle-plugin")
+    def spring_uri  = new URI("${aliyun_uri}/spring")
+    def spring_plugin_uri  = new URI("${aliyun_uri}/spring-plugin")
+    def grails_core_uri  = new URI("${aliyun_uri}/grails-core")
+    def apache_snapshots_uri  = new URI("${aliyun_uri}/apache-snapshots")
+
+    repositories {
+        all {
+            ArtifactRepository repo ->
+            if (repo instanceof MavenArtifactRepository) {
+                def url = repo.url.toString()
+                if (url.startsWith('https://repo.maven.apache.org/maven2/') || url.startsWith('https://repo1.maven.org/maven2') || url.startsWith('https://jcenter.bintray.com/')) {
+                    repo.setUrl(public_uri)
+                } else if (url.startsWith('https://dl.google.com/dl/android/maven2') || url.startsWith('https://maven.google.com/')) {
+                    repo.setUrl(google_uri)
+                } else if (url.startsWith('https://plugins.gradle.org/m2/')) {
+                    repo.setUrl(gradle_plugin_uri)
+                } else if (url.startsWith('http://repo.spring.io/libs-milestone/')) {
+                    repo.setUrl(spring_uri)
+                } else if (url.startsWith('http://repo.spring.io/plugins-release/')) {
+                    repo.setUrl(spring_plugin_uri)
+                } else if (url.startsWith('https://repo.grails.org/grails/core')) {
+                    repo.setUrl(grails_core_uri)
+                } else if (url.startsWith('https://repository.apache.org/snapshots/')) {
+                    repo.setUrl(apache_snapshots_uri)
+                }
+            }
+        }
+    }
+
+    buildscript {
+        repositories {
+            maven { url "${aliyun_uri}/public/" }
+            all { ArtifactRepository repo ->
+                if (repo instanceof MavenArtifactRepository) {
+                    def url = repo.url.toString()
+                    if (url.startsWith('https://repo.maven.apache.org/maven2/') || url.startsWith('https://repo1.maven.org/maven2') || url.startsWith('https://jcenter.bintray.com/')) {
+                    repo.setUrl(public_uri)
+                } else if (url.startsWith('https://dl.google.com/dl/android/maven2') || url.startsWith('https://maven.google.com/')) {
+                    repo.setUrl(google_uri)
+                } else if (url.startsWith('https://plugins.gradle.org/m2/')) {
+                    repo.setUrl(gradle_plugin_uri)
+                } else if (url.startsWith('http://repo.spring.io/libs-milestone/')) {
+                    repo.setUrl(spring_uri)
+                } else if (url.startsWith('http://repo.spring.io/plugins-release/')) {
+                    repo.setUrl(spring_plugin_uri)
+                } else if (url.startsWith('https://repo.grails.org/grails/core')) {
+                    repo.setUrl(grails_core_uri)
+                } else if (url.startsWith('https://repository.apache.org/snapshots/')) {
+                    repo.setUrl(apache_snapshots_uri)
+                }
+                }
+            }
+        }
+    }
+}
