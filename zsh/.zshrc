@@ -1,3 +1,7 @@
+#
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+autoload -Uz compinit && compinit
+
 # === variable ===
 proxy_url=http://127.0.0.1:7890
 
@@ -23,14 +27,20 @@ alias lla="lsd -la"
 alias lsa='lsd -lah'
 
 # === functions ===
+export https_proxy=$proxy_url
+export http_proxy=$proxy_url
 export all_proxy=$proxy_url
 function proxy-on() {
+	export https_proxy=$proxy_url
+	export http_proxy=$proxy_url
 	export all_proxy=$proxy_url
 	git config --global http.proxy $proxy_url
 	echo "Proxy ON..."
 }
 
 function proxy-off() {
+	unset http_proxy
+	unset https_proxy
 	unset all_proxy
 	git config --global --unset http.proxy
 	echo "Proxy OFF..."
@@ -64,10 +74,6 @@ zinit light changyuheng/zsh-interactive-cd
 
 # theme
 eval "$(starship init zsh)"
-
-# nvm
-source /usr/share/nvm/init-nvm.sh
-# nvm end
 
 # pnpm
 export PNPM_HOME="/home/kuolemax/.local/share/pnpm"

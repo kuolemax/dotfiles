@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 ranger/.config/ranger/plugins/__init__.py
 ranger/.config/ranger/plugins/__pycache__
+=======
+**/packer_comiled.lua
+>>>>>>> a27f21c (remove packer_compiled.lua)
