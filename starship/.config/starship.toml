@@ -1,34 +1,39 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
+format = "  $all"
+
 # Inserts a blank line between shell prompts
 add_newline = false
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character] # The name of the module we are configuring is "character"
-success_symbol = "[➜](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
+success_symbol = "[❯](bold green)[❯](bold red)[❯](bold blue)"
 
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = false
 
 [username]
-show_always = true
+show_always = false
 style_root = "bg:#9A348E"
 format = '[$user ]($style)'
 
 [directory]
-format = "[at $path ]($style)"
+format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
 [directory.substitutions]
 "Documents" = " "
 "Downloads" = " "
-"Music" = " "
+"Music" = " "
 "Pictures" = " "
 "Codes" = " "
 "Code" = " "
 
 [lua]
 symbol = " "
+
+[rust]
+symbol = " "
