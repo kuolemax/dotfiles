@@ -1,4 +1,2 @@
-require "user.options"
-require "user.plugins"
-require "user.bufferline"
-require "user.autocmd"
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
