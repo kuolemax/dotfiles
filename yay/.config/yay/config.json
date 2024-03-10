@@ -9,7 +9,7 @@
 	"pacmanconf": "/etc/pacman.conf",
 	"redownload": "no",
 	"rebuild": "no",
-	"answerclean": "All",
+	"answerclean": "",
 	"answerdiff": "None",
 	"answeredit": "None",
 	"answerupgrade": "",
